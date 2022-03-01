@@ -1,0 +1,30 @@
+html
+    head
+        link(rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css")
+        title= "Digitalspetskompetens Api"
+    body
+        nav(class="navbar" role="navigation" aria-label="main navigation")
+            .container
+              .navbar-brand
+                a(class="navbar-item" href="/")
+                    p.is-size-4= "Digitalspetskompetens API"
+
+                .navbar-menu
+                    .navbar-start
+                      a.navbar-item(href="/")= "Hem"
+
+                      a.navbar-item(href="#githublink")= "Dokumentation"
+
+
+        section.section
+            .container
+                h1.title= "Digitalspetskompetens öppna API"
+
+                .columns.is-desktop
+                    .column.is-half
+                        p= "Digitalspetskopmetens öppna api är ett öppet api kopplat till uppdraget från regeringen gällande digitalspetskompetens."
+                
+                .columns.is-desktop
+                    .column.is-half
+                        p= "För att använda detta API behöver du ha tillgång till en api nyckel. Du kan begära ut en API nyckel via vår api nyckel sida."
+                a(href="/api-nyckel")= "Begär api nyckel"

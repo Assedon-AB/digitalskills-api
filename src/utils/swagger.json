@@ -1,0 +1,686 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"version": "1.0.0",
+		"title": "Digitalspetskompetens öppna API",
+        	"description": "Ett öppet api för prognoser av digitalspetskompetens & yrken.",
+        	"contact": {
+                "email": "elias@assedon.se"
+        	}
+	},
+    "host": "localhost:8080",
+	"basePath": "/api/v1/",
+	"tags": [
+		{
+			"name": "Competence",
+			"description": "Prediction and trend of competence."
+		},
+		{
+			"name": "Occupation",
+			"description": "Prediction and trend of occupation."
+		}, {
+            "name": "Industry",
+            "description": "Prediction and trend of the IT industry."
+        }
+	],
+	"schemes": ["http", "https"],
+	"consumes": ["application/json"],
+	"produces": ["application/json"],
+	"paths": {
+        "/bransch": {
+			"post": {
+				"tags": ["Industry"],
+				"description": "Create a industry.",
+				"produces": ["application/json"],
+				"parameters": [
+                    {
+                        "name": "x-api-key",
+                        "in": "header",
+                        "required": true,
+                        "description": "API key"
+                    }
+				],
+				"responses": {
+					"201": {
+						"description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/Industry"
+                        }
+					},
+					"429": {
+						"description": "Max API calls exceeded."
+					},
+                    "401": {
+                        "description": "Missing or invalid API key"
+                    },
+                    "403": {
+                        "description": "You're not allowed."
+                    }
+				}
+			},
+			"get": {
+				"tags": ["Industry"],
+				"description": "Get industry",
+				"produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "x-api-key",
+                        "in": "header",
+                        "required": true,
+                        "description": "API key"
+                    }
+                ],
+				"responses": {
+					"200": {
+						"description": "Success",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Industry"
+                            }
+                        }
+					},
+					"429": {
+						"description": "Max API calls exceeded."
+					},
+                    "401": {
+                        "description": "Missing or invalid API key"
+                    }
+				}
+			}
+		},
+        "/bransch/{id}": {
+            "put": {
+                "tags": ["Industry"],
+                "description": "Update a industry",
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "description": "Industry id"
+                    },
+                    {
+                        "name": "x-api-key",
+                        "in": "header",
+                        "required": true,
+                        "description": "API key"
+                    }
+                ],
+				"responses": {
+					"201": {
+						"description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/Industry"
+                        }
+					},
+					"429": {
+						"description": "Max API calls exceeded."
+					},
+                    "401": {
+                        "description": "Missing or invalid API key"
+                    },
+                    "403": {
+                        "description": "You're not allowed"
+                    },
+                    "404": {
+                        "description": "Could not find a valid industry with specified id"
+                    }
+				}
+            },
+            "delete": {
+                "tags": ["Industry"],
+                "description": "Delete a industry",
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "description": "Industry id"
+                    },
+                    {
+                        "name": "x-api-key",
+                        "in": "header",
+                        "required": true,
+                        "description": "API key"
+                    }
+
+                ],
+				"responses": {
+					"201": {
+						"description": "Success"
+					},
+					"429": {
+						"description": "Max API calls exceeded."
+					},
+                    "401": {
+                        "description": "Missing or invalid API key"
+                    },
+                    "403": {
+                        "description": "You're not allowed"
+                    },
+                    "404": {
+                        "description": "Could not find a valid competence with specified id"
+                    }
+				}
+            }
+        },
+		"/kompetenser": {
+			"post": {
+				"tags": ["Competence"],
+				"description": "Create a competence.",
+				"produces": ["application/json"],
+				"parameters": [
+					{
+						"name": "Competence",
+						"required": ["name"],
+						"in": "body",
+						"properties": {
+							"name": {
+                                "type": "string"
+                            }
+						}
+					},
+                    {
+                        "name": "x-api-key",
+                        "in": "header",
+                        "required": true,
+                        "description": "API key"
+                    }
+				],
+				"responses": {
+					"201": {
+						"description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/Competence"
+                        }
+					},
+					"429": {
+						"description": "Max API calls exceeded."
+					},
+                    "401": {
+                        "description": "Missing or invalid API key"
+                    },
+                    "403": {
+                        "description": "You're not allowed."
+                    }
+				}
+			},
+			"get": {
+				"tags": ["Competence"],
+				"description": "Get competences",
+				"produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "x-api-key",
+                        "in": "header",
+                        "required": true,
+                        "description": "API key"
+                    }
+                ],
+				"responses": {
+					"200": {
+						"description": "Success",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Competence"
+                            }
+                        }
+					},
+					"429": {
+						"description": "Max API calls exceeded."
+					},
+                    "401": {
+                        "description": "Missing or invalid API key"
+                    }
+				}
+			}
+		},
+        "/kompetenser/{id}": {
+            "get": {
+                "tags": ["Competence"],
+                "description": "Get a competence",
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "description": "Competence id"
+                    },
+                    {
+                        "name": "x-api-key",
+                        "in": "header",
+                        "required": true,
+                        "description": "API key"
+                    }
+                ],
+				"responses": {
+					"200": {
+						"description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/Competence"
+                        }
+					},
+					"429": {
+						"description": "Max API calls exceeded."
+					},
+                    "401": {
+                        "description": "Missing or invalid API key"
+                    },
+                    "404": {
+                        "description": "Could not find a valid competence with specified id"
+                    }
+				}
+            },
+            "put": {
+                "tags": ["Competence"],
+                "description": "Update a competence",
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "description": "Competence id"
+                    },
+                    {
+                        "name": "x-api-key",
+                        "in": "header",
+                        "required": true,
+                        "description": "API key"
+                    }
+                ],
+				"responses": {
+					"201": {
+						"description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/Competence"
+                        }
+					},
+					"429": {
+						"description": "Max API calls exceeded."
+					},
+                    "401": {
+                        "description": "Missing or invalid API key"
+                    },
+                    "403": {
+                        "description": "You're not allowed"
+                    },
+                    "404": {
+                        "description": "Could not find a valid competence with specified id"
+                    }
+				}
+            },
+            "delete": {
+                "tags": ["Competence"],
+                "description": "Delete a competence",
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "description": "Competence id"
+                    },
+                    {
+                        "name": "x-api-key",
+                        "in": "header",
+                        "required": true,
+                        "description": "API key"
+                    }
+
+                ],
+				"responses": {
+					"201": {
+						"description": "Success"
+					},
+					"429": {
+						"description": "Max API calls exceeded."
+					},
+                    "401": {
+                        "description": "Missing or invalid API key"
+                    },
+                    "403": {
+                        "description": "You're not allowed"
+                    },
+                    "404": {
+                        "description": "Could not find a valid competence with specified id"
+                    }
+				}
+            }
+        },
+        "/yrken": {
+            "post": {
+                "tags": ["Occupation"],
+                "description": "Create a occupation.",
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "Occupation",
+                        "required": ["name"],
+                        "in": "body",
+                        "properties": {
+                            "name": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    {
+                        "name": "x-api-key",
+                        "in": "header",
+                        "required": true,
+                        "description": "API key"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/Occupation"
+                        }
+                    },
+                    "429": {
+                        "description": "Max API calls exceeded."
+                    },
+                    "401": {
+                        "description": "Missing or invalid API key"
+                    },
+                    "403": {
+                        "description": "You're not allowed."
+                    }
+                }
+            },
+            "get": {
+                "tags": ["Occupation"],
+                "description": "Get occupations",
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "x-api-key",
+                        "in": "header",
+                        "required": true,
+                        "description": "API key"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Occupation"
+                            }
+                        }
+                    },
+                    "429": {
+                        "description": "Max API calls exceeded."
+                    },
+                    "401": {
+                        "description": "Missing or invalid API key"
+                    }
+                }
+            }
+        },
+        "/yrken/{id}": {
+            "get": {
+                "tags": ["Occupation"],
+                "description": "Get a occupation",
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "description": "Occupation id"
+                    },
+                    {
+                        "name": "x-api-key",
+                        "in": "header",
+                        "required": true,
+                        "description": "API key"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/Occupation"
+                        }
+                    },
+                    "429": {
+                        "description": "Max API calls exceeded."
+                    },
+                    "401": {
+                        "description": "Missing or invalid API key"
+                    },
+                    "404": {
+                        "description": "Could not find a valid competence with specified id"
+                    }
+                }
+            },
+            "put": {
+                "tags": ["Occupation"],
+                "description": "Update a occupation",
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "description": "Occupation id"
+                    },
+                    {
+                        "name": "x-api-key",
+                        "in": "header",
+                        "required": true,
+                        "description": "API key"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/Occupation"
+                        }
+                    },
+                    "429": {
+                        "description": "Max API calls exceeded."
+                    },
+                    "401": {
+                        "description": "Missing or invalid API key"
+                    },
+                    "403": {
+                        "description": "You're not allowed"
+                    },
+                    "404": {
+                        "description": "Could not find a valid competence with specified id"
+                    }
+                }
+            },
+            "delete": {
+                "tags": ["Occupation"],
+                "description": "Delete a occupation",
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "description": "Occupation id"
+                    },
+                    {
+                        "name": "x-api-key",
+                        "in": "header",
+                        "required": true,
+                        "description": "API key"
+                    }
+
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Success"
+                    },
+                    "429": {
+                        "description": "Max API calls exceeded."
+                    },
+                    "401": {
+                        "description": "Missing or invalid API key"
+                    },
+                    "403": {
+                        "description": "You're not allowed"
+                    },
+                    "404": {
+                        "description": "Could not find a valid competence with specified id"
+                    }
+                }
+            }
+        }
+	},
+    "definitions": {
+        "Industry": {
+            "properties": {
+                "num": {"type": "number"},
+                "ad_series": { "type": "object" },
+                "prediction_series": {
+                  "month_3": { "type": "object" },
+                  "month_6": { "type": "object" },
+                  "month_12": { "type": "object" }
+                },
+                "trend_percentages": {
+                  "month_3": { "type": "number" },
+                  "month_6": { "type": "number" },
+                  "month_12": { "type": "number" }
+                },
+                "prediction_percentages": {
+                  "month_3": { "type": "number" },
+                  "month_6": { "type": "number" },
+                  "month_12": { "type": "number" }
+                },
+                "prediction_values": {
+                  "month_3": { "type": "number" },
+                  "month_6": { "type": "number" },
+                  "month_12": { "type": "number" }
+                }
+            }
+
+        },
+		"Competence": {
+            "properties": {
+                "name": { "type": "string", "description": "Competence name", "example": "React"},
+                "subgroup": {"type": "string"},
+                "maingroup": {"type": "string"},
+                "num": {"type": "number"},
+                "ad_series": { "type": "object" },
+                "prediction_series": {
+                  "month_3": { "type": "object" },
+                  "month_6": { "type": "object" },
+                  "month_12": { "type": "object" }
+                },
+                "trend_percentages": {
+                  "month_3": { "type": "number" },
+                  "month_6": { "type": "number" },
+                  "month_12": { "type": "number" }
+                },
+                "prediction_percentages": {
+                  "month_3": { "type": "number" },
+                  "month_6": { "type": "number" },
+                  "month_12": { "type": "number" }
+                },
+                "prediction_values": {
+                  "month_3": { "type": "number" },
+                  "month_6": { "type": "number" },
+                  "month_12": { "type": "number" }
+                },
+                "skills": {
+                  "type": "object"
+                },
+                "jobs": {
+                  "type": "object"
+                },
+                "geos": {
+                  "type": "object"
+                },
+                "traits": {
+                  "type": "object"
+
+                },
+                "employeers": {
+                  "type": "object"
+                }
+}
+		},
+		"Occupation": {
+            "properties": {
+                "name": { "type": "string", "description": "Occupation name", "example": "Frontendutvecklare"},
+                "num": {"type": "number"},
+                "subgroup": {"type": "string"},
+                "maingroup": {"type": "string"},
+                "ad_series": { "type": "object" },
+                "ad_prediction_series": {
+                  "month_3": { "type": "object" },
+                  "month_6": { "type": "object" },
+                  "month_12": { "type": "object" }
+                },
+                "trend_percentages": {
+                  "month_3": { "type": "number" },
+                  "month_6": { "type": "number" },
+                  "month_12": { "type": "number" }
+                },
+                "prediction_percentages": {
+                  "month_3": { "type": "number" },
+                  "month_6": { "type": "number" },
+                  "month_12": { "type": "number" }
+                },
+                "prediction_values": {
+                  "month_3": { "type": "number" },
+                  "month_6": { "type": "number" },
+                  "month_12": { "type": "number" }
+                },
+                "skills": {
+                  "type": "object"
+                },
+                "jobs": {
+                  "type": "object"
+                },
+                "geos": {
+                  "type": "object"
+                },
+                "traits": {
+                  "type": "object"
+
+                },
+                "employeers": {
+                  "type": "object"
+                }
+         }
+		},
+		"Error": {
+			"type": "object",
+			"description": "Error data",
+			"properties": {
+                "code": {
+                    "type": "number",
+                    "description": "Error code",
+                    "example": 404
+                },
+				"message": {
+					"type": "string",
+					"description": "Error message",
+					"example": "Competence not found"
+				}
+			}
+		}
+    }
+}

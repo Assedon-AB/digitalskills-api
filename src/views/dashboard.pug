@@ -1,0 +1,39 @@
+html
+    head
+        link(rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css")
+        title= "Digitalspetskompetens Öppet API"
+    body
+        nav(class="navbar" role="navigation" aria-label="main navigation")
+            .container
+              .navbar-brand
+                a(class="navbar-item" href="/")
+                    p.is-size-4= "Digitalspetskompetens API"
+
+                .navbar-menu
+                    .navbar-start
+                      a.navbar-item(href="/")= "Hem"
+
+                      a.navbar-item(href="#githublink")= "Dokumentation"
+
+
+        section.section
+            .container
+                h1.title= "Begär ut en API-nyckel"
+
+                .columns.is-desktop
+                    if api_key
+                        .column.is-half
+                            p.mb-4= "Spara ner denna nyckel säkert någonstans, då du inte kommer kunna få ut denna nyckel igen."
+                            .field
+                                label(class="label")= "API Nyckel"
+                                .control
+                                    input(class="input" type="text" value=api_key readonly)
+                    else
+                        form(action="/api-nyckel" method="POST").column.is-half
+                            .field
+                                label(class="label")= "Domän"
+                                .control
+                                    input(class="input" type="text" name="host" value="" placeholder="Domänen som kommer använda detta API")
+
+
+                            button.button.is-info= "Begär API Nyckel"
