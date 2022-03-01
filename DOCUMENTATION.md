@@ -1,6 +1,6 @@
 # Digspec API Documentation
 
-## Om API
+## About API
 Digspec API is an open API that provides forecast and information regarding technical edge competencies and professions. This API is developed by Assedon in conjunction with the mission from UKÄ to develop an application the predicts technical edge competencies.
 
 The mission is part of larger goverment mission that Tillväxtverket and UKÄ is accountable for. Read more at [https://digitalspetskompetens.se/](https://digitalspetskompetens.se/)
