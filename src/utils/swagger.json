@@ -2,8 +2,8 @@
 	"swagger": "2.0",
 	"info": {
 		"version": "1.0.0",
-		"title": "Digitalspetskompetens öppna API",
-        	"description": "Ett öppet api för prognoser av digitalspetskompetens & yrken.",
+		"title": "Digitalskills.se API",
+        	"description": "An open API for predictions of digitalskills and occupations.",
         	"contact": {
                 "email": "elias@assedon.se"
         	}
