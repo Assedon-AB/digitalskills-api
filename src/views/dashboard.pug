@@ -1,21 +1,21 @@
 html
     head
         link(rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css")
-        title= "Digitalspetskompetens Öppet API"
+        title= "Digitalskills API"
     body
         nav(class="navbar" role="navigation" aria-label="main navigation")
             .container
               .navbar-brand
                 a(class="navbar-item" href="/")
-                    p.is-size-4= "Digitalspetskompetens API"
+                    p.is-size-4= "Digitalskills API"
 
                 .navbar-menu
                     .navbar-start
                       a.navbar-item(href="/")= "Hem"
 
-                      a.navbar-item(href="https://github.com/Assedon-AB/digspec-api")= "Dokumentation"
+                      a.navbar-item(href="https://github.com/Assedon-AB/digspec-api" target="_blank")= "Dokumentation"
 
-                      a.navbar-item(href="/api/v1/api-docs")= "Open API"
+                      a.navbar-item(href="/api/v1/api-docs" target="_blank")= "Open API"
 
 
         section.section
@@ -33,9 +33,21 @@ html
                     else
                         form(action="/api-nyckel" method="POST").column.is-half
                             .field
-                                label(class="label")= "Domän"
+                                label(class="label")= "Domännamn"
                                 .control
-                                    input(class="input" type="text" name="host" value="" placeholder="Domänen som kommer använda detta API")
+                                    input(class="input" type="text" name="host" value="" placeholder="Till exempel: google.com eller digitalskills.se" pattern="^((?!-)[A-Za-z0-9-]{1,}(?<!-)\.)+[A-Za-z]{2,}$" required)
 
 
                             button.button.is-info= "Begär API Nyckel"
+
+        script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js")
+        script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js")
+        script.
+            $("form").submit((event) => {
+                if ($("form").valid()) {
+                    return true;
+                } else {
+                    alert("Ange ett korrekt domännamn. Till exempel: 'google.com' eller 'api.digitalskills.se'");
+                    return false;
+                }
+            })
