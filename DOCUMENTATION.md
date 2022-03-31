@@ -1,7 +1,7 @@
-# Digspec API Documentation
+# Digitalskills API Documentation
 
 ## About API
-Digspec API is an open API that provides forecast and information regarding technical edge competencies and occupations. This API is developed by Assedon in conjunction with the mission from UKÄ to develop an application that predicts technical competencies and occupations.
+Digitalskills API is an open API that provides forecast and information regarding technical edge competencies and occupations. This API is developed by Assedon in conjunction with the mission from UKÄ and Tillväxtverket to develop an application that predicts technical competencies and occupations.
 
 The mission is part of larger goverment mission that Tillväxtverket and UKÄ is accountable for. Read more at [https://digitalspetskompetens.se/](https://digitalspetskompetens.se/)
 

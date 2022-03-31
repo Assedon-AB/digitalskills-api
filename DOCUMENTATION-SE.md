@@ -1,7 +1,7 @@
-# Digitalspetskompetens API Dokumentation
+# Digitalskills API Dokumentation
 
 ## Om API
-Digitalspetskompetens API:t är ett öppet API som tillhandahåller prognos och information om digitalspetskompetenser samt yrken. Detta API är utvecklat av Assedon AB i samband med ett uppdrag från UKÄ att utveckla en applikation som prognotiserar digitala spetskompetenser. 
+Digitalskills API:t är ett öppet API som tillhandahåller prognos och information om digitalspetskompetenser samt yrken. Detta API är utvecklat av Assedon AB i samband med ett uppdrag från UKÄ och Tillväxtverket att utveckla en applikation som prognotiserar digitala spetskompetenser.
 
 Uppdraget är en del av ett större regerings uppdrag som Tillväxtverket samt UKÄ är ansvariga för. Läs mer på [https://digitalspetskompetens.se/](https://digitalspetskompetens.se/)
 
