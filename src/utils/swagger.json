@@ -34,6 +34,14 @@
 				"produces": ["application/json"],
 				"parameters": [
                     {
+						"name": "Industry",
+						"required": ["name"],
+						"in": "body",
+						"schema": {
+                            "$ref": "#/definitions/Industry"
+						}
+                    },
+                    {
                         "name": "x-api-key",
                         "in": "header",
                         "required": true,
@@ -179,10 +187,8 @@
 						"name": "Competence",
 						"required": ["name"],
 						"in": "body",
-						"properties": {
-							"name": {
-                                "type": "string"
-                            }
+						"schema": {
+                            "$ref": "#/definitions/Competence"
 						}
 					},
                     {
@@ -368,10 +374,8 @@
                         "name": "Occupation",
                         "required": ["name"],
                         "in": "body",
-                        "properties": {
-                            "name": {
-                                "type": "string"
-                            }
+                        "schema": {
+                            "$ref": "#/definitions/Occupation"
                         }
                     },
                     {
@@ -551,8 +555,12 @@
     "definitions": {
         "Industry": {
             "properties": {
+                "_id": {"type": "string"},
                 "num": {"type": "number"},
                 "ad_series": { "type": "object" },
+                "model": {"type": "string"},
+                "mape": {"type": "object"},
+                "evel_mape": {"type": "number"},
                 "prediction_series": {
                   "month_3": { "type": "object" },
                   "month_6": { "type": "object" },
@@ -578,10 +586,12 @@
         },
 		"Competence": {
             "properties": {
+                "_id": { "type": "string"},
                 "name": { "type": "string", "description": "Competence name", "example": "React"},
-                "subgroup": {"type": "string"},
-                "maingroup": {"type": "string"},
                 "num": {"type": "number"},
+                "model": {"type": "string"},
+                "mape": {"type": "object"},
+                "eval_mape": {"type": "number"},
                 "ad_series": { "type": "object" },
                 "prediction_series": {
                   "month_3": { "type": "object" },
@@ -614,21 +624,19 @@
                 },
                 "traits": {
                   "type": "object"
-
-                },
-                "employeers": {
-                  "type": "object"
                 }
 }
 		},
 		"Occupation": {
             "properties": {
+                "_id": { "type": "string" },
                 "name": { "type": "string", "description": "Occupation name", "example": "Frontendutvecklare"},
                 "num": {"type": "number"},
-                "subgroup": {"type": "string"},
-                "maingroup": {"type": "string"},
+                "model": {"type": "string"},
+                "mape": {"type": "object"},
+                "eval_mape": {"type": "number"},
                 "ad_series": { "type": "object" },
-                "ad_prediction_series": {
+                "prediction_series": {
                   "month_3": { "type": "object" },
                   "month_6": { "type": "object" },
                   "month_12": { "type": "object" }
@@ -658,10 +666,6 @@
                   "type": "object"
                 },
                 "traits": {
-                  "type": "object"
-
-                },
-                "employeers": {
                   "type": "object"
                 }
          }
