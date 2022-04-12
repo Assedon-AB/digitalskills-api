@@ -35,7 +35,7 @@ html
                             .field
                                 label(class="label")= "Domännamn"
                                 .control
-                                    input(class="input" type="text" name="host" value="" placeholder="Till exempel: google.com eller digitalskills.se" pattern="^((?!-)[A-Za-z0-9-]{1,}(?<!-)\.)+[A-Za-z]{2,}$" required)
+                                    input(class="input" type="text" name="host" value="" placeholder="Till exempel: google.com eller digitalskills.se" pattern="^((?!-)((([A-Za-z0-9-]{1,}(?<!-)\.)+([A-Za-z]{2,}))|localhost)+(:[0-9]{2,5})?)$" required)
 
 
                             button.button.is-info= "Begär API Nyckel"
