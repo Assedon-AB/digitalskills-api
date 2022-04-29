@@ -31,6 +31,9 @@ When you want to turn off your api and docker container, do the following steps:
 1. Run `docker container ls` to find the CONTAINER ID of your container.
 2. Run `docker kill <CONTAINER ID>` to stop the container with the specified CONTAINER ID.
 
+## Vill du hjälpa till att förbättra verktyget?
+Digitalskills är open source och ifall du hittar något som verkar fel eller har ett förbättringsförslag så kan du skapa en issue här på Github som förklarar det som kan förbättras.
+
 ## Tests
 Tests are written with jest and supertest. You can locate these tests inside ´src/__tests__/´
 
