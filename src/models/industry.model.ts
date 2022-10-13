@@ -27,6 +27,9 @@ export interface IndustryDocument extends mongoose.Document {
   trend_percentages?: {
     [trendSpan: string]: number;
   };
+  geos?: {
+    [geoName: string]: number;
+  };
 }
 
 const industrySchema = new mongoose.Schema(
@@ -47,6 +50,7 @@ const industrySchema = new mongoose.Schema(
     prediction_percentages: Object,
     prediction_values: Object,
     trend_percentages: Object,
+    geos: Object,
   },
   {
     timestamps: true,
